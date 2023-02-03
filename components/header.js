@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-const Header = ({title}) => {
+const Header = ({title, right}) => {
   const navigation = useNavigation();
 
   return (
@@ -15,6 +15,7 @@ const Header = ({title}) => {
         />
       </TouchableOpacity>
       <Text style={styles.text}>{title}</Text>
+      <View style={{position: 'absolute', right: 10}}>{right}</View>
     </View>
   );
 };
@@ -26,11 +27,13 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 20,
+    shadowColor: '#fff',
   },
   image: {
     tintColor: '#fff',
-    height: 30,
-    width: 30,
+    height: 25,
+    width: 25,
   },
   text: {
     fontSize: 30,

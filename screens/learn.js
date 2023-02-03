@@ -1,18 +1,19 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {Text, View, LogBox, StyleSheet} from 'react-native';
+import CardGrid from '../components/cardGrid';
+LogBox.ignoreLogs(['new NativeEventEmitter']);
+import Dashboard from '../constants/Dashboard/dashboard';
 const Learn = () => {
   return (
     <View style={styles.container}>
-      <Text>LEARN</Text>
+      <CardGrid data={Dashboard} />
     </View>
   );
 };
 export default Learn;
-const styles=StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'#000'
-    }
-})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#121212',
+  },
+});

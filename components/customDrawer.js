@@ -4,30 +4,45 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
-import {View, Text, TouchableOpacity, Dimensions} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+  StatusBar,
+} from 'react-native';
+import {useDeviceOrientation} from '@react-native-community/hooks';
 const CustomeDrawer = props => {
   const navigation = useNavigation();
+  const drawerStyle = {
+    height: Dimensions.get('window').height - 245,
+    borderTopWidth: 0.5,
+    borderColor: '#fff',
+    paddingTop: 5,
+    paddingBottom: 5,
+  };
   return (
     <DrawerContentScrollView
       showsVerticalScrollIndicator={false}
       {...props}
       contentContainerStyle={{
         backgroundColor: '#000',
-        height: Dimensions.get('window').height,
       }}>
       <View
-        style={{height: 120, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontSize: 35}}>ADHAYANTANTRASH</Text>
-      </View>
-      <View
         style={{
-          flex: 1,
-          borderTopWidth: 0.5,
-          borderColor: '#fff',
-          paddingTop: 5,
-          paddingBottom: 5,
+          height: 120,
+          flexShrink: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{fontSize: 35, color: '#fff', flexShrink: 1}}>
+          ADHAYANTANTRASH
+        </Text>
+      </View>
+      <View style={useDeviceOrientation().portrait && drawerStyle}>
         <DrawerItemList {...props} />
       </View>
       <View
@@ -44,20 +59,9 @@ const CustomeDrawer = props => {
             paddingLeft: 20,
           }}
           onPress={() => {
-            navigation.navigate('privacyPolicy');
+            navigation.navigate('profile');
           }}>
-          <Text style={{fontSize: 25}}>Privacy Policy</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: 50,
-            justifyContent: 'space-around',
-            paddingLeft: 20,
-          }}
-          onPress={() => {
-            navigation.navigate('termsCondition');
-          }}>
-          <Text style={{fontSize: 25}}>Terms & Conditions</Text>
+          <Text style={{fontSize: 25, color: '#fff'}}>Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -68,7 +72,7 @@ const CustomeDrawer = props => {
           onPress={() => {
             navigation.navigate('about');
           }}>
-          <Text style={{fontSize: 25}}>About Us</Text>
+          <Text style={{fontSize: 25, color: '#fff'}}>About Us</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>

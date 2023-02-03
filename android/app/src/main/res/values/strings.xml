@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AdhyanTantrash</string>
+    <string name="heart">Made with \u2764 at SBU</string>
+
 </resources>

@@ -84,7 +84,7 @@ const Game = ({gameData, gameName, reduxGameData}) => {
       const randomNumber = Math.floor(Math.random() * value.length);
       setAlphabet(shuffleArray(value[randomNumber].jumbledWords));
       setCorrect(value[randomNumber].correctWord);
-      setIndex(randomNumber)
+      setIndex(randomNumber);
       setSuccess('');
       setCount(0);
       setAnswers([]);
@@ -296,22 +296,34 @@ const Game = ({gameData, gameName, reduxGameData}) => {
               )}
             </View>
             {success === 'true' && (
-              <TouchableOpacity
-                style={{marginTop: '10%'}}
-                onPress={() => getRandomNumber()}>
-                <Text
+              <TouchableOpacity onPress={() => getRandomNumber()}>
+                <View
                   style={{
-                    fontSize: 20,
-                    color: 'green',
-                    textAlign: 'center',
+                    marginTop: '10%',
+                    padding: 20,
                     backgroundColor: '#050637',
-                    padding: 10,
-                    width: '40%',
-                    fontWeight: 'bold',
                     borderRadius: 25,
                   }}>
-                  उचित (Right)
-                </Text>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'green',
+                      textAlign: 'center',
+                      marginBottom: 2,
+                      fontWeight: 'bold',
+                    }}>
+                    उचित (Right)
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'green',
+                      textAlign: 'center',
+                      fontWeight: 'bold',
+                    }}>
+                    Next
+                  </Text>
+                </View>
               </TouchableOpacity>
             )}
             {success === 'wrong' && (
@@ -480,19 +492,33 @@ const Game = ({gameData, gameName, reduxGameData}) => {
           <TouchableOpacity
             style={{marginTop: '7%'}}
             onPress={() => getRandomNumber()}>
-            <Text
+            <View
               style={{
-                fontSize: 20,
-                color: 'green',
-                textAlign: 'center',
-                backgroundColor: '#050637',
-                padding: 10,
-                width: '40%',
-                fontWeight: 'bold',
-                borderRadius: 25,
+                  borderRadius: 25,
+                  padding: 20,
+                  width: '40%',
+                  backgroundColor: '#050637',
               }}>
-              उचित (Right)
-            </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: 'green',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  marginBottom:2,
+                }}>
+                उचित (Right)
+              </Text>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: 'green',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                }}>
+               NEXT
+              </Text>
+            </View>
           </TouchableOpacity>
         )}
         {success === 'wrong' && (

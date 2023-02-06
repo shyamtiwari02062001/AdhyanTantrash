@@ -24,8 +24,11 @@ const ProfileScreen = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [accuracy, setAccuracy] = useState('');
   useLayoutEffect(() => {
-    const value = (reduxGameData[0].games * 100) / reduxGameData[0].attempt;
-    if (value >= 90) {
+    const value =
+      (Number(reduxGameData[0].games) * 100) / Number(reduxGameData[0].attempt);
+    if (reduxGameData[0].attempt === '0') {
+      setAccuracy('------');
+    } else if (value >= 90) {
       setAccuracy('Excellent');
     } else if (value >= 75 && value < 90) {
       setAccuracy('Very Good');

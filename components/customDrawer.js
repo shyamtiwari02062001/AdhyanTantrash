@@ -42,7 +42,7 @@ const CustomeDrawer = props => {
           ADHAYANTANTRASH
         </Text>
       </View>
-      <View style={useDeviceOrientation().portrait && drawerStyle}>
+      <View style={drawerStyle}>
         <DrawerItemList {...props} />
       </View>
       <View
